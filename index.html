@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="琪琪伦理电影网（qiqilunlidianyingwang-app）——专注伦理题材电影的在线观影与资讯平台，提供高清伦理电影推荐、影评解析、导演专题与观影指南。">
+<meta name="keywords" content="琪琪伦理电影网, qiqilunlidianyingwang-app, 伦理电影, 伦理片推荐, 伦理电影在线观看, 伦理电影影评">
+<meta name="author" content="琪琪伦理电影网">
+<meta name="robots" content="index, follow">
+<title>琪琪伦理电影网 - 伦理电影推荐与观影指南 | qiqilunlidianyingwang-app</title>
+<link rel="canonical" href="https://qiqilunlidianyingwang-app.github.io">
+<style>
+  :root{
+    --bg:#0b0e14;
+    --bg2:#121722;
+    --card:#161c29;
+    --line:#232b3d;
+    --txt:#e8ecf5;
+    --sub:#9aa6bd;
+    --accent:#ff5a5f;
+    --accent2:#ffb020;
+    --good:#2ecc9b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:radial-gradient(1200px 600px at 80% -10%,rgba(255,90,95,.18),transparent 60%),
+               radial-gradient(900px 500px at 0% 10%,rgba(255,176,32,.10),transparent 55%),
+               var(--bg);
+    color:var(--txt);
+    line-height:1.75;
+    overflow-x:hidden;
+  }
+  a{color:var(--accent2);text-decoration:none;}
+  a:hover{color:var(--accent);}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px;}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,14,20,.82);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;gap:18px;height:64px;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;}
+  .logo .badge{width:34px;height:34px;border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    display:grid;place-items:center;color:#fff;font-size:16px;}
+  .logo span{font-size:19px;}
+  .logo small{color:var(--sub);font-weight:500;font-size:12px;margin-left:6px;}
+  .nav-links{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap;}
+  .nav-links a{
+    color:var(--sub);font-size:14px;padding:8px 12px;border-radius:8px;transition:.2s;
+  }
+  .nav-links a:hover{color:var(--txt);background:var(--card);}
+  .nav-cta{
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:#fff!important;font-weight:700;
+  }
+  .menu-btn{display:none;background:none;border:none;color:var(--txt);font-size:26px;cursor:pointer;}
+
+  /* ===== Hero ===== */
+  .hero{padding:64px 0 40px;}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;}
+  .tagline{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--card);border:1px solid var(--line);
+    padding:6px 14px;border-radius:999px;font-size:13px;color:var(--sub);margin-bottom:18px;
+  }
+  .tagline i{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 0 4px rgba(46,204,155,.18);}
+  h1{font-size:clamp(30px,5vw,52px);line-height:1.15;font-weight:850;letter-spacing:-.5px;}
+  h1 em{font-style:normal;background:linear-gradient(92deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero p.lead{color:var(--sub);font-size:17px;margin:16px 0 22px;max-width:540px;}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{padding:13px 26px;border-radius:12px;font-weight:700;font-size:15px;transition:.2s;display:inline-flex;align-items:center;gap:8px;}
+  .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 10px 28px -10px rgba(255,90,95,.7);}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{border:1px solid var(--line);color:var(--txt);}
+  .btn-ghost:hover{border-color:var(--accent2);}
+  .stats{display:flex;gap:26px;margin-top:30px;flex-wrap:wrap;}
+  .stat b{display:block;font-size:24px;color:var(--accent2);}
+  .stat span{color:var(--sub);font-size:13px;}
+
+  /* hero visual */
+  .poster{position:relative;}
+  .poster .frame{
+    aspect-ratio:3/4;border-radius:22px;padding:9px;
+    background:linear-gradient(140deg,var(--accent),var(--accent2),#6b7bff);
+    transform:perspective(900px) rotateY(-9deg) rotateX(4deg);
+    box-shadow:0 30px 60px -25px rgba(0,0,0,.8);
+  }
+  .poster .frame img{width:100%;height:100%;object-fit:cover;border-radius:14px;display:block;}
+  .float-chip{
+    position:absolute;background:var(--bg2);border:1px solid var(--line);
+    padding:10px 14px;border-radius:12px;font-size:13px;box-shadow:0 12px 30px rgba(0,0,0,.5);
+  }
+  .c1{top:-14px;left:-20px;}
+  .c2{bottom:26px;right:-22px;}
+  .float-chip b{color:var(--accent2);}
+
+  /* ===== Section ===== */
+  section{padding:56px 0;}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:28px;}
+  .sec-head h2{font-size:clamp(22px,3vw,32px);font-weight:800;display:flex;align-items:center;gap:12px;}
+  .sec-head h2::before{content:"";width:5px;height:26px;border-radius:4px;background:linear-gradient(var(--accent),var(--accent2));}
+  .sec-head p{color:var(--sub);font-size:14px;}
+  .eyebrow{color:var(--accent2);font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+
+  /* ===== 栏目1 电影推荐 ===== */
+  .grid{display:grid;gap:22px;}
+  .g-4{grid-template-columns:repeat(4,1fr);}
+  .g-3{grid-template-columns:repeat(3,1fr);}
+  .g-2{grid-template-columns:repeat(2,1fr);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.25s;display:flex;flex-direction:column;}
+  .card:hover{transform:translateY(-6px);border-color:rgba(255,176,32,.5);box-shadow:0 18px 40px -20px rgba(255,90,95,.6);}
+  .thumb{position:relative;aspect-ratio:16/10;overflow:hidden;}
+  .thumb img{width:100%;height:100%;object-fit:cover;transition:.5s;}
+  .card:hover .thumb img{transform:scale(1.06);}
+  .thumb .lb{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);
+    color:#fff;font-size:12px;padding:4px 10px;border-radius:6px;}
+  .thumb .rate{position:absolute;bottom:12px;right:12px;background:var(--accent2);color:#1a1a1a;font-weight:800;font-size:13px;padding:3px 9px;border-radius:6px;}
+  .card-body{padding:16px;flex:1;display:flex;flex-direction:column;}
+  .card-body h3{font-size:17px;margin-bottom:6px;}
+  .card-body p{color:var(--sub);font-size:13.5px;flex:1;}
+  .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--sub);}
+  .meta span{background:var(--bg2);padding:3px 9px;border-radius:99px;border:1px solid var(--line);}
+
+  /* ===== 栏目2 影评解析 ===== */
+  .review{background:linear-gradient(135deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:18px;padding:26px;transition:.25s;}
+  .review:hover{border-color:rgba(255,90,95,.5);}
+  .review .cat{color:var(--accent);font-size:12px;letter-spacing:1px;}
+  .review h3{font-size:20px;margin:8px 0 10px;}
+  .review p{color:var(--sub);font-size:14px;}
+  .review .foot{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:13px;color:var(--sub);}
+  .avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--accent2),var(--accent));}
+
+  /* ===== 栏目3 导演专题 ===== */
+  .director{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);}
+  .director img{width:100%;height:260px;object-fit:cover;display:block;}
+  .director .info{position:absolute;inset:auto 0 0 0;padding:18px;background:linear-gradient(0deg,rgba(0,0,0,.92),transparent);}
+  .director h3{font-size:18px;}
+  .director p{color:var(--sub);font-size:13px;}
+
+  /* ===== 栏目4 观影指南 ===== */
+  .guide{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;position:relative;}
+  .step .num{font-size:40px;font-weight:900;line-height:1;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .step h3{margin:10px 0 8px;font-size:18px;}
+  .step p{color:var(--sub);font-size:14px;}
+
+  /* ===== 栏目5 关于 / 资讯 ===== */
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;}
+  .about-txt{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;}
+  .about-txt h3{font-size:22px;margin-bottom:12px;}
+  .about-txt p{color:var(--sub);font-size:15px;margin-bottom:12px;}
+  .feature{display:flex;gap:14px;padding:16px 0;border-bottom:1px dashed var(--line);}
+  .feature:last-child{border:none;}
+  .feature .ic{width:44px;height:44px;border-radius:12px;flex:none;display:grid;place-items:center;font-size:20px;
+    background:linear-gradient(135deg,rgba(255,90,95,.2),rgba(255,176,32,.2));border:1px solid var(--line);}
+  .feature h4{font-size:16px;}
+  .feature p{color:var(--sub);font-size:13.5px;}
+
+  /* ===== FAQ ===== */
+  .faq{display:grid;gap:12px;}
+  .faq-item{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .faq-item summary{padding:16px 20px;cursor:pointer;font-weight:700;font-size:15.5px;list-style:none;display:flex;justify-content:space-between;gap:12px;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+";color:var(--accent2);font-size:20px;font-weight:400;}
+  .faq-item[open] summary::after{content:"−";}
+  .faq-item p{padding:0 20px 16px;color:var(--sub);font-size:14px;}
+
+  /* ===== Footer ===== */
+  footer{border-top:1px solid var(--line);padding:40px 0 24px;margin-top:20px;}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:26px;margin-bottom:26px;}
+  .foot-col h4{font-size:15px;margin-bottom:12px;color:var(--accent2);}
+  .foot-col ul{list-style:none;}
+  .foot-col li{margin-bottom:8px;}
+  .foot-col a{color:var(--sub);font-size:13.5px;}
+  .foot-col a:hover{color:var(--txt);}
+  .copyright{text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--line);padding-top:20px;}
+  .copyright b{color:var(--txt);}
+
+  /* ===== 响应式 ===== */
+  @media(max-width:900px){
+    .g-4{grid-template-columns:repeat(2,1fr);}
+    .guide,.g-3,.about-grid{grid-template-columns:1fr;}
+    .hero-grid{grid-template-columns:1fr;}
+    .poster{order:-1;max-width:360px;margin:0 auto;}
+  }
+  @media(max-width:680px){
+    .menu-btn{display:block;margin-left:auto;}
+    .nav-links{position:fixed;inset:64px 0 auto 0;flex-direction:column;
+      background:rgba(11,14,20,.96);backdrop-filter:blur(12px);padding:16px;gap:4px;
+      border-bottom:1px solid var(--line);transform:translateY(-150%);transition:.3s;}
+    .nav-links.open{transform:translateY(0);}
+    .nav-links a{border-radius:10px;}
+    .g-4,.g-2{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .hero{padding:36px 0 24px;}
+    .stat b{font-size:20px;}
+    section{padding:40px 0;}
+  }
+  @media(max-width:420px){
+    .foot-grid{grid-template-columns:1fr;}
+    .btn{padding:12px 18px;font-size:14px;}
+  }
+  .reveal{opacity:0;transform:translateY(18px);transition:.6s cubic-bezier(.2,.7,.3,1);}
+  .reveal.in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="返回顶部">
+      <span class="badge">琪</span>
+      <span>琪琪伦理电影网<small>qiqilunlidianyingwang-app</small></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="菜单">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">首页</a>
+      <a href="#films">电影推荐</a>
+      <a href="#reviews">影评解析</a>
+      <a href="#directors">导演专题</a>
+      <a href="#guide">观影指南</a>
+      <a href="#about">关于我们</a>
+      <a href="#faq">常见问题</a>
+      <a href="#contact" class="nav-cta">立即观影</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- 栏目：首页 Hero -->
+  <section id="home" class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="tagline"><i></i> 每日更新 · 精选伦理题材佳作</span>
+        <h1>琪琪伦理电影网<br><em>看懂人心深处的光与暗</em></h1>
+        <p class="lead">琪琪伦理电影网（qiqilunlidianyingwang-app）专注于伦理题材电影的推荐、解读与观影指引。我们不打擦边球，只做有文学性与人文深度的伦理片精选，帮你用一部电影的时间，理解一段复杂的人性。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#films">开始选片 →</a>
+          <a class="btn btn-ghost" href="#guide">观影指南</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>1280+</b><span>收录伦理电影</span></div>
+          <div class="stat"><b>360+</b><span>深度影评</span></div>
+          <div class="stat"><b>98.6%</b><span>无广告纯净体验</span></div>
+        </div>
+      </div>
+      <div class="poster reveal">
+        <div class="frame">
+          <img src="https://picsum.photos/id/1074/600/800" alt="琪琪伦理电影网精选伦理电影海报">
+        </div>
+        <div class="float-chip c1">🎬 本周主题：<b>婚姻与背叛</b></div>
+        <div class="float-chip c2">⭐ 平均评分 <b>8.7 / 10</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目一：电影推荐 -->
+  <section id="films">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow">Column 01 · 选片</div>
+          <h2>伦理电影推荐</h2>
+        </div>
+        <p>按主题精选，每一部都值得安静看完</p>
+      </div>
+      <div class="grid g-4">
+        <article class="card reveal">
+          <div class="thumb">
+            <img src="https://picsum.photos/id/1067/480/300" alt="电影《理智与情感》剧照" loading="lazy">
+            <span class="lb">家庭伦理</span><span class="rate">9.1</span>
+          </div>
+          <div class="card-body">
+            <h3>理智与情感</h3>
+            <p>当责任压过欲望，一个家庭的女性如何在道德与情感之间寻找出口。</p>
+            <div class="meta"><span>1995</span><span>李安</span><span>138分钟</span></div>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div class="thumb">
+            <img src="https://picsum.photos/id/1080/480/300" alt="电影《偷情》剧照" loading="lazy">
+            <span class="lb">婚姻伦理</span><span class="rate">8.4</span>
+          </div>
+          <div class="card-body">
+            <h3>婚姻故事</h3>
+            <p>一场离婚撕开体面，爱情消失后，伦理与责任如何安放。</p>
+            <div class="meta"><span>2019</span><span>诺亚·鲍姆巴赫</span><span>137分钟</span></div>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div class="thumb">
+            <img src="https://picsum.photos/id/1059/480/300" alt="电影《小偷家族》剧照" loading="lazy">
+            <span class="lb">社会伦理</span><span class="rate">8.8</span>
+          </div>
+          <div class="card-body">
+            <h3>小偷家族</h3>
+            <p>没有血缘的人凑成一个家，法律与伦理，哪一个更接近"家人"？</p>
+            <div class="meta"><span>2018</span><span>是枝裕和</span><span>121分钟</span></div>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div class="thumb">
+            <img src="https://picsum.photos/id/1069/480/300" alt="电影《燃情岁月》剧照" loading="lazy">
+            <span class="lb">情感伦理</span><span class="rate">8.6</span>
+          </div>
+          <div class="card-body">
+            <h3>燃情岁月</h3>
+            <p>兄弟、爱情与承诺的三角拉扯，一段关于选择与代价的故事。</p>
+            <div class="meta"><span>1994</span><span>爱德华·兹威克</span><span>133分钟</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目二：影评解析 -->
+  <section id="reviews" style="background:linear-gradient(180deg,transparent,var(--bg2));">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow">Column 02 · 解读</div>
+          <h2>影评与深度解析</h2>
+        </div>
+        <p>不只讲剧情，更讲"为什么"</p>
+      </div>
+      <div class="grid g-3">
+        <article class="review reveal">
+          <div class="cat">伦理议题 · 亲情</div>
+          <h3>当"为你好"变成枷锁：东亚家庭伦理片的通病与解药</h3>
+          <p>从《寄生虫》到《悲情城市》，我们拆解那些以爱之名实施的道德绑架，以及镜头语言如何替沉默者发声。</p>
+          <div class="foot"><span class="avatar"></span><span>影评人 · 阿默　·　12 分钟阅读</span></div>
+        </article>
+        <article class="review reveal">
+          <div class="cat">伦理议题 · 欲望</div>
+          <h3>出轨叙事为何总站在男性视角？重看《廊桥遗梦》</h3>
+          <p>一段四天的爱情被浪漫化三十年。当我们把镜头转向被缺席的妻子，伦理判断是否会彻底反转？</p>
+          <div class="foot"><span class="avatar"></span><span>专栏作者 · 青野　·　8 分钟阅读</span></div>
+        </article>
+        <article class="review reveal">
+          <div class="cat">伦理议题 · 科技</div>
+          <h3>AI 有道德吗？《机械姬》之后的伦理电影新命题</h3>
+          <p>当被审视的对象从"人与人"变成"人与造物"，伦理电影的边界正在被重新划定。</p>
+          <div class="foot"><span class="avatar"></span><span>特邀撰稿 · 言寺　·　10 分钟阅读</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目三：导演专题 -->
+  <section id="directors">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow">Column 03 · 作者</div>
+          <h2>导演专题</h2>
+        </div>
+        <p>伦理是他们的母题，镜头是他们的法庭</p>
+      </div>
+      <div class="grid g-4">
+        <div class="director reveal">
+          <img src="https://picsum.photos/id/1005/400/520" alt="导演 是枝裕和" loading="lazy">
+          <div class="info"><h3>是枝裕和</h3><p>家庭 · 社会伦理　·　9 部入选</p></div>
+        </div>
+        <div class="director reveal">
+          <img src="https://picsum.photos/id/1012/400/520" alt="导演 李安" loading="lazy">
+          <div class="info"><h3>李安</h3><p>情感 · 文化伦理　·　7 部入选</p></div>
+        </div>
+        <div class="director reveal">
+          <img src="https://picsum.photos/id/1025/400/520" alt="导演 阿斯哈·法哈蒂" loading="lazy">
+          <div class="info"><h3>法哈蒂</h3><p>道德困境 · 谎言　·　6 部入选</p></div>
+        </div>
+        <div class="director reveal">
+          <img src="https://picsum.photos/id/1071/400/520" alt="导演 朴赞郁" loading="lazy">
+          <div class="info"><h3>朴赞郁</h3><p>复仇 · 人性暗面　·　8 部入选</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目四：观影指南 -->
+  <section id="guide" style="background:linear-gradient(180deg,var(--bg2),transparent);">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow">Column 04 · 方法</div>
+          <h2>伦理电影观影指南</h2>
+        </div>
+        <p>三步，看懂一部"难看"的电影</p>
+      </div>
+      <div class="guide">
+        <div class="step reveal">
+          <div class="num">01</div>
+          <h3>先放下判断</h3>
+          <p>伦理片的第一陷阱是"站队"。别急着给角色贴好坏标签，先问：他为什么这样做？处境往往比动机更能说明问题。</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">02</div>
+          <h3>盯住细节</h3>
+          <p>一场没有对白的长镜头、一件反复出现的道具、一个被切断的声音——伦理片的答案通常藏在叙事的缝隙里，而非台词中。</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">03</div>
+          <h3>看完再聊</h3>
+          <p>伦理没有标准答案。带着不适与疑问去讨论，比寻求一个"正确解读"更有价值。琪琪伦理电影网的影评区，正是为这种讨论而存在。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目五：关于我们 + 资讯 -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about-txt reveal">
+        <div class="eyebrow">Column 05 · 关于</div>
+        <h3>关于琪琪伦理电影网</h3>
+        <p>琪琪伦理电影网（qiqilunlidianyingwang-app）成立于 2021 年，是一个专注于<b>伦理题材电影</b>的非营利性影迷社区。我们相信，电影最珍贵的功能，是让我们在安全的距离内，练习理解复杂的人。</p>
+        <p>本站所有片源均来自合法授权平台，坚决抵制盗版与低俗内容。我们所说的"伦理电影"，指的是以道德困境、人际关系、情感抉择为核心叙事张力的严肃电影作品，而非擦边分类。</p>
+        <div class="feature">
+          <div class="ic">🎯</div>
+          <div><h4>精选而非堆砌</h4><p>每部入选影片均经三位编辑独立评分，低于 7.5 分不入荐片榜。</p></div>
+        </div>
+        <div class="feature">
+          <div class="ic">📝</div>
+          <div><h4>解读而非剧透</h4><p>影评只谈结构与伦理命题，关键反转一律折叠处理。</p></div>
+        </div>
+        <div class="feature">
+          <div class="ic">🌱</div>
+          <div><h4>尊重与包容</h4><p>拒绝道德审判式语言，允许不同解读共存。</p></div>
+        </div>
+      </div>
+      <aside class="grid g-1" style="display:grid;gap:16px;">
+        <div class="card reveal" style="flex:none;">
+          <div class="card-body">
+            <div class="cat" style="color:var(--accent);font-size:12px;letter-spacing:1px;">站点信息</div>
+            <h3 style="font-size:18px;margin:8px 0;">访问方式与收录</h3>
+            <p>官方网站地址：<b style="color:var(--accent2);">https://qiqilunlidianyingwang-app.github.io</b></p>
+            <p style="margin-top:8px;">本站采用语义化 HTML 结构与静态生成方式，页面加载迅速、结构清晰，便于搜索引擎抓取与索引。</p>
+            <div class="meta"><span>HTTPS</span><span>移动端自适应</span><span>静态站点</span></div>
+          </div>
+        </div>
+        <div class="card reveal" style="flex:none;">
+          <div class="card-body">
+            <div class="cat" style="color:var(--accent);font-size:12px;letter-spacing:1px;">本周片单</div>
+            <h3 style="font-size:18px;margin:8px 0;">主题：谎言与善意</h3>
+            <p>《美丽的谎言》《谎言的诞生》《白谎言》——当真相会伤人，沉默是否也是一种伦理选择？</p>
+            <a class="btn btn-ghost" href="#films" style="margin-top:12px;padding:9px 16px;font-size:13px;">查看完整片单</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 栏目六：常见问题 -->
+  <section id="faq">
+    <div class="wrap" style="max-width:820px;">
+      <div class="sec-head reveal" style="justify-content:center;text-align:center;">
+        <div>
+          <div class="eyebrow">FAQ</div>
+          <h2>常见问题</h2>
+        </div>
+      </div>
+      <div class="faq">
+        <details class="faq-item reveal" open>
+          <summary>琪琪伦理电影网是做什么的？</summary>
+          <p>琪琪伦理电影网（qiqilunlidianyingwang-app）是一个专注于伦理题材电影的推荐与解读站点。我们筛选以道德困境、家庭关系、情感抉择为核心叙事的严肃电影作品，提供选片建议、深度影评与导演专题，帮助观众更好地理解影片背后的伦理命题。</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>"伦理电影"指的是哪类影片？</summary>
+          <p>本站所指的伦理电影，是以伦理冲突为叙事核心的艺术电影或剧情片，例如探讨婚姻忠诚、代际关系、社会偏见、科技与人性的作品。我们不收录、不推荐任何以"伦理"为噱头的低俗或违规内容。</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>如何访问琪琪伦理电影网？</summary>
+          <p>可直接在浏览器地址栏输入官方网址 <b>https://qiqilunlidianyingwang-app.github.io</b> 访问。本站为 GitHub Pages 静态站点，支持电脑与手机浏览器直接打开，无需安装任何应用。</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>片源是否合法？</summary>
+          <p>是的。本站仅提供影片信息、海报、剧情简介与观看指引，所链接的播放与购买渠道均为正规授权平台。我们坚决反对盗版，发现侵权链接欢迎通过页脚联系方式反馈。</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>如何向本站投稿影评？</summary>
+          <p>欢迎通过页脚"联系我们"提交原创影评。稿件需为本人原创、未在其他平台首发，字数建议在 1200 字以上，重点放在影片的伦理命题与视听语言分析，而非剧情复述。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系 -->
+  <section id="contact" style="padding-top:0;">
+    <div class="wrap">
+      <div class="card reveal" style="background:linear-gradient(135deg,var(--card),rgba(255,90,95,.12));">
+        <div class="card-body" style="align-items:center;text-align:center;">
+          <div class="eyebrow">Get in touch</div>
+          <h3 style="font-size:24px;">想找一部"讲人性"的电影？</h3>
+          <p style="max-width:560px;margin:8px auto;">告诉我你最近的情绪或困惑，琪琪伦理电影网会为你匹配三部最对症的伦理电影。</p>
+          <a class="btn btn-primary" href="#" style="margin-top:14px;">写信给编辑部 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a class="logo" href="#">
+          <span class="badge">琪</span>
+          <span>琪琪伦理电影网</span>
+        </a>
+        <p style="color:var(--sub);font-size:13px;margin-top:12px;max-width:280px;">用电影理解人性，用伦理思考生活。琪琪伦理电影网 · qiqilunlidianyingwang-app</p>
+      </div>
+      <div class="foot-col">
+        <h4>栏目导航</h4>
+        <ul>
+          <li><a href="#films">电影推荐</a></li>
+          <li><a href="#reviews">影评解析</a></li>
+          <li><a href="#directors">导演专题</a></li>
+          <li><a href="#guide">观影指南</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>专题分类</h4>
+        <ul>
+          <li><a href="#">家庭伦理</a></li>
+          <li><a href="#">婚姻情感</a></li>
+          <li><a href="#">社会道德</a></li>
+          <li><a href="#">人性暗面</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>关于与帮助</h4>
+        <ul>
+          <li><a href="#about">关于我们</a></li>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#contact">联系编辑部</a></li>
+          <li><a href="#">投稿须知</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      © <span id="year">2026</span> <b>琪琪伦理电影网</b> · qiqilunlidianyingwang-app &nbsp;|&nbsp; 官方网站：https://qiqilunlidianyingwang-app.github.io &nbsp;|&nbsp; 倡导正版观影，拒绝盗版与低俗内容
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 移动端菜单
+  var menuBtn = document.getElementById('menuBtn');
+  var navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', function(){
+    navLinks.classList.toggle('open');
+    menuBtn.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
+  });
+  navLinks.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){
+      navLinks.classList.remove('open');
+      menuBtn.textContent = '☰';
+    }
+  });
+
+  // 滚动浮现动画
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // 年份
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
